@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffb6c1">
+    <title>Happy Birthday Shrawani! 🎂✨</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Birthday Music Configuration -->
+    <script>
+        // Set your music file path here - Change this to your own music file
+        const BIRTHDAY_MUSIC = "assets/birthday-music.mp3";
+        // You can also use alternative music file paths if the main one fails to load
+        const FALLBACK_MUSIC = "assets/happy-birthday.mp3";
+    </script>
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <div class="loading-screen">
+        <div class="loader"></div>
+        <p>Creating something special for Shrawani...</p>
+    </div>
+    
+    <audio id="bgMusic" loop>
+        <!-- Music will be dynamically set by JavaScript -->
+    </audio>
+    
+    <div class="music-toggle">
+        <i class="fas fa-volume-up" id="musicOn"></i>
+        <i class="fas fa-volume-mute" id="musicOff"></i>
+        <span class="music-tooltip">Toggle Music</span>
+    </div>
+
+    <!-- <div class="placeholder-guide">
+        <a href="assets/image-placeholders.html" target="_blank">Need help with images?</a>
+    </div> -->
+
+    <div class="intro-section active" id="intro">
+        <div class="intro-content">
+            <h1 class="birthday-heading">Happy Birthday, Shrawani!</h1>
+            <p class="birthday-subtext">Click to Begin Your Special Celebration</p>
+            <button class="start-button">Start Celebration</button>
+        </div>
+    </div>
+
+    <div class="main-section" id="main">
+        <div class="welcome-message">
+            <h1 class="handwritten">Happy Birthday, Shrawani! <span class="birthday-emojis">🎂 ✨</span></h1>
+            <p class="message">May your day be filled with love, laughter, and unforgettable moments!</p>
+        </div>
+
+        <div class="section memories">
+            <h2>Our Cherished Memories</h2>
+            <div class="gallery-container">
+                <div class="gallery">
+                    <div class="memory-card" data-emoji="❤️">
+                        <div class="memory-card-image">
+                            <img src="assets/placeholders/placeholder1.jpeg" alt="Memory with Shrawani">
+                        </div>
+                        <div class="memory-card-caption" style="visibility: hidden">Revisit the moment</div>
+                    </div>
+                </div>
+                <div class="gallery-nav">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="card-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
+                    <div class="indicator" data-index="3"></div>
+                    <div class="indicator" data-index="4"></div>
+                    <div class="indicator" data-index="5"></div>
+                    <div class="indicator" data-index="6"></div>
+                    <div class="indicator" data-index="7"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section secret-message">
+            <h2>Your Special Card</h2>
+            <p class="click-instruction"></p>
+            <div class="greeting-card">
+                <div class="card-front">
+                    <div class="decorative-circles"></div>
+                    <div class="decorative-waves">
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                        <div class="wave"></div>
+                    </div>
+                    <span class="sparkle s1">✧</span>
+                    <span class="sparkle s2">✦</span>
+                    <span class="sparkle s3">✧</span>
+                    <h3>Happy Birthday Shrawani!</h3>
+                    <p>Click to open</p>
+                </div>
+                <div class="card-inner" style="visibility: hidden;">
+                    <div class="secret-content">
+                        <div class="card-left-content">
+                            <h3 class="card-heading">Dear Shrawani,</h3>
+                            <p class="card-message">
+                                You are an incredibly special person, and we're all so lucky to have you in our lives! Your presence brings so much happiness, and today is all about celebrating you! ❤️ ✨ May your day be filled with laughter, love, and all the wonderful things that make you smile! 🎂 🎁 🎊
+                            </p>
+                            <p class="card-message">
+                                Wishing you a year ahead full of exciting adventures, endless joy, and unforgettable moments! Have the most amazing birthday ever! 🎈 🥳 🎉
+                            </p>
+                            <p class="card-message">Many happy returns of the day!</p>
+                            <p class="card-signature">With love,</p>
+                        </div>
+                        <div class="card-divider"></div>
+                        <div class="card-right-content">
+                            <div class="gift-box">
+                                <div class="gift-base"></div>
+                                <div class="gift-lid"></div>
+                                <div class="gift-ribbon"></div>
+                                <div class="gift-tag">
+                                    <span class="gift-tag-text">For You!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cake-game-btn">
+            <button class="play-game-btn">Let's Play a Game Before Cake! 🎮</button>
+        </div>
+    </div>
+
+    <div class="game-section" id="game">
+        <h2>Pop the Balloons!</h2>
+        <p>Find the special cake balloon to continue the celebration!</p>
+        <div class="game-container">
+            <!-- Balloons will be generated here by JavaScript -->
+        </div>
+    </div>
+
+    <div class="cake-section" id="cake">
+        <div class="celebration-message">
+            <h2>A special moment for a special you! 🎂✨</h2>
+        </div>
+        <div class="cake-container">
+            <div class="cake">
+                <div class="cake-top"></div>
+                <div class="cake-middle"></div>
+                <div class="cake-bottom"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+        </div>
+        <div class="wishes-container">
+            <h3>Wishing you a day filled with happiness and a year filled with joy!</h3>
+            <p>May all your dreams and wishes come true! 💫</p>
+        </div>
+    </div>
+
+    <div class="floating-elements">
+        <div class="floating-item balloon1"></div>
+        <div class="floating-item balloon2"></div>
+        <div class="floating-item balloon3"></div>
+        <div class="floating-item heart1"></div>
+        <div class="floating-item heart2"></div>
+        <div class="floating-item petal1"></div>
+        <div class="floating-item petal2"></div>
+        <div class="floating-item petal3"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
