@@ -1,0 +1,368 @@
+/* Horizontal Scroll Gallery Styles */
+
+/* Horizontal Scroll View */
+.horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100vh;
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none;  /* Hide scrollbar for Firefox */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    display: none;  /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.scroll-item {
+    flex: 0 0 100%;
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+/* Styling for scroll view images */
+.scroll-item .gallery-img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.scroll-item .gallery-img:hover {
+    transform: scale(1.02);
+}
+
+/* Grid View - Custom Layout to match reference image */
+.grid-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background-color: white;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.grid-view.active {
+    display: flex;
+    opacity: 1;
+}
+
+.grid-container {
+    width: 90%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-areas: 
+        "img1 img1 img1 img2 img2 img3 img3 img3"
+        "img4 img4 img4 img5 img5 img6 img6 img6"
+        "img7 img7 img7 img7 img8 img8 img8 img8";
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: minmax(120px, auto);
+    gap: 12px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.grid-item {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+    animation-delay: calc(var(--item-index, 0) * 0.1s);
+    position: relative;
+}
+
+/* Individual grid items positioned according to reference image */
+.item1 { grid-area: img1; }
+.item2 { grid-area: img2; }
+.item3 { grid-area: img3; }
+.item4 { 
+    grid-area: img4; 
+    min-height: 180px;
+}
+.item5 { 
+    grid-area: img5; 
+    min-height: 180px;
+}
+.item6 { grid-area: img6; }
+.item7 { grid-area: img7; }
+.item8 { grid-area: img8; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.grid-item:hover {
+    transform: scale(1.02);
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.grid-item .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Special style for vertical/portrait images */
+.grid-item.portrait-img .gallery-img {
+    object-position: center top;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-areas: 
+            "img1 img1 img1 img2 img2 img3 img3 img3"
+            "img4 img4 img5 img5 img5 img6 img6 img6"
+            "img7 img7 img7 img7 img8 img8 img8 img8";
+    }
+}
+
+@media (max-width: 992px) {
+    .grid-container {
+        grid-template-areas: 
+            "img1 img1 img1 img2 img2 img3 img3"
+            "img4 img4 img5 img5 img5 img6 img6"
+            "img7 img7 img7 img8 img8 img8 img8";
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-areas: 
+            "img1 img1 img1 img2"
+            "img3 img3 img4 img4"
+            "img5 img5 img5 img6"
+            "img7 img7 img8 img8";
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .scroll-item .gallery-img {
+        max-width: 90%;
+        max-height: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid-container {
+        grid-template-areas: 
+            "img1 img1"
+            "img2 img3"
+            "img4 img5"
+            "img6 img7"
+            "img8 img8";
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-areas: 
+            "img1"
+            "img2"
+            "img3"
+            "img4"
+            "img5"
+            "img6"
+            "img7"
+            "img8";
+        grid-template-columns: 1fr;
+    }
+    
+    .scroll-item .gallery-img {
+        max-width: 95%;
+        max-height: 75%;
+    }
+}
+
+/* Button to launch the full-screen gallery */
+.open-gallery-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ffb6c1, #9370db);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.open-gallery-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Hide horizontal scroll and grid view initially */
+.horizontal-scroll,
+.grid-view {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Show when active */
+.horizontal-scroll.active,
+.grid-view.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Close button for gallery */
+.gallery-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-close:before,
+.gallery-close:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: #ff6b95;
+}
+
+.gallery-close:before {
+    transform: rotate(45deg);
+}
+
+.gallery-close:after {
+    transform: rotate(-45deg);
+}
+
+/* Add pulse animation for the continue button */
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        box-shadow: 0 6px 25px rgba(255, 182, 193, 0.5);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Style for continue button */
+.continue-to-card-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ffb6c1, #ff69b4);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1002;
+    font-weight: bold;
+}
+
+/* Blur effect for background when viewing images */
+.blur-background * {
+    filter: blur(8px);
+    transition: filter 0.3s ease;
+}
+
+/* Keep gallery images and overlay content sharp */
+.blur-background .image-preview-overlay,
+.blur-background .image-preview-overlay * {
+    filter: none;
+}
+
+.blur-background .grid-item .gallery-img,
+.blur-background .scroll-item .gallery-img {
+    filter: none;
+    z-index: 5;
+    position: relative;
+}
+
+/* Ensure the image preview overlay itself isn't blurred */
+.image-preview-overlay {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1003;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Add animation for image when opened */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.image-preview-overlay img {
+    animation: zoomIn 0.3s ease forwards;
+    max-width: 90%;
+    max-height: 90vh;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+} 

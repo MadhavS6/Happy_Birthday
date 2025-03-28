@@ -1,0 +1,30 @@
+Placeholder Images for Shrawani's Birthday Website
+
+To complete the website, please add the following images to this assets folder:
+
+1. Gallery Images:
+   - placeholder1.jpg through placeholder9.jpg (memories with Shrawani)
+
+2. Balloon Images for the Game:
+   - pink-balloon.png
+   - purple-balloon.png
+   - yellow-balloon.png
+   - blue-balloon.png
+   - green-balloon.png
+   - cake-balloon.png (special balloon that reveals the cake)
+
+3. Decoration Images:
+   - balloon.png (for floating decorations)
+   - heart.png (for floating decorations)
+   - petal.png (for floating decorations)
+   - cupcake-cursor.png (custom cursor image)
+
+4. Sound Files:
+   - birthday-music.mp3 (background music)
+   - pop.mp3 (balloon popping sound)
+   - celebration.mp3 (celebration sound when cake appears)
+
+You can use any images you prefer, but make sure they match the names exactly.
+For best results, use images with transparent backgrounds for the decorations and balloons.
+
+The website will work without these images, but adding them will enhance the experience! 
